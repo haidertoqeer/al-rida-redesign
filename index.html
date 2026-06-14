@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al-Rida Driving School UK</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brandRed: '#d71920',
+            brandDark: '#05080d',
+            brandText: '#07111f',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+    }
+
+    .hero-bg {
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.82) 42%, rgba(0,0,0,0.34) 100%),
+        linear-gradient(0deg, rgba(0,0,0,0.52), rgba(0,0,0,0.05)),
+        url('images/hero-driver.png');
+      background-size: cover;
+      background-position: center right;
+    }
+
+    .cta-bg {
+      background:
+        radial-gradient(circle at 78% 45%, rgba(215,25,32,0.75), transparent 32%),
+        linear-gradient(120deg, #07090d 0%, #05080d 52%, #d71920 140%);
+    }
+
+    .red-line-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(130deg, transparent 50%, rgba(215,25,32,0.38), transparent 75%),
+        linear-gradient(150deg, transparent 58%, rgba(255,255,255,0.12), transparent 72%);
+      pointer-events: none;
+    }
+
+    .package-pattern {
+      background-image:
+        radial-gradient(circle at 88% 40%, transparent 0, transparent 190px, rgba(15,23,42,0.08) 191px, transparent 192px),
+        radial-gradient(circle at 88% 40%, transparent 0, transparent 250px, rgba(15,23,42,0.06) 251px, transparent 252px),
+        radial-gradient(circle at 88% 40%, transparent 0, transparent 315px, rgba(15,23,42,0.05) 316px, transparent 317px);
+    }
+
+    .popular-ribbon {
+      position: absolute;
+      left: -42px;
+      top: 24px;
+      transform: rotate(-45deg);
+      width: 140px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg {
+        background-position: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-brandText">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+    <div class="max-w-[1240px] mx-auto h-[76px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+
+      <a href="#" class="flex items-center shrink-0">
+        <img
+          src="images/logo.png"
+          alt="Al-Rida Driving School"
+          class="h-[48px] md:h-[56px] w-auto object-contain"
+        />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7 text-[14px] font-semibold text-gray-900">
+        <a href="#" class="relative text-brandRed">
+          Home
+          <span class="absolute -bottom-[29px] left-0 w-full h-[3px] bg-brandRed rounded-full"></span>
+        </a>
+
+        <a href="#about" class="hover:text-brandRed transition flex items-center gap-1">
+          About <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </a>
+
+        <a href="#services" class="hover:text-brandRed transition flex items-center gap-1">
+          Services <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </a>
+
+        <a href="#reviews" class="hover:text-brandRed transition flex items-center gap-1">
+          Reviews <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </a>
+
+        <a href="#links" class="hover:text-brandRed transition flex items-center gap-1">
+          Useful Links <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </a>
+
+        <a href="#account" class="hover:text-brandRed transition flex items-center gap-1">
+          Account <i class="fa-solid fa-chevron-down text-[10px]"></i>
+        </a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <div class="flex items-center gap-3 text-black">
+          <i class="fa-brands fa-facebook-f text-[16px]"></i>
+          <i class="fa-brands fa-instagram text-[17px]"></i>
+          <i class="fa-brands fa-tiktok text-[16px]"></i>
+          <i class="fa-brands fa-snapchat text-[17px]"></i>
+        </div>
+
+        <a
+          href="#packages"
+          class="bg-brandRed hover:bg-red-700 transition text-white text-[14px] font-bold px-5 py-3 rounded-md shadow-md shadow-red-200"
+        >
+          Book a Lesson
+        </a>
+      </div>
+
+      <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 rounded-lg border border-gray-200 flex items-center justify-center">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 px-5 py-5 shadow-lg">
+      <nav class="flex flex-col gap-3 text-[15px] font-semibold">
+        <a href="#" class="px-3 py-3 rounded-lg bg-red-50 text-brandRed">Home</a>
+        <a href="#about" class="px-3 py-3 rounded-lg hover:bg-red-50">About</a>
+        <a href="#services" class="px-3 py-3 rounded-lg hover:bg-red-50">Services</a>
+        <a href="#reviews" class="px-3 py-3 rounded-lg hover:bg-red-50">Reviews</a>
+        <a href="#links" class="px-3 py-3 rounded-lg hover:bg-red-50">Useful Links</a>
+        <a href="#account" class="px-3 py-3 rounded-lg hover:bg-red-50">Account</a>
+        <a href="#packages" class="mt-2 bg-brandRed text-white text-center px-5 py-3 rounded-lg font-bold">Book a Lesson</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-bg relative overflow-hidden">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-[106px] relative">
+
+      <div class="max-w-[690px]">
+        <h1 class="text-white font-extrabold leading-[1.08] tracking-[-1.5px] text-[38px] sm:text-[48px] md:text-[62px]">
+          Pass Your Driving Test <br />
+          First Time with <br />
+          <span class="text-brandRed">Al-Rida</span> Driving School UK
+        </h1>
+
+        <p class="mt-6 max-w-[560px] text-white/95 text-[16px] md:text-[18px] leading-8 font-semibold">
+          Trusted for Driving Lessons Across Wakefield, Dewsbury,
+          Batley, Heckmondwike & Surrounding Areas
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#packages"
+            class="inline-flex items-center justify-center gap-2 bg-brandRed hover:bg-red-700 transition text-white font-bold px-7 py-4 rounded-md shadow-lg shadow-black/20"
+          >
+            Book a Lesson
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </a>
+
+          <a
+            href="#packages"
+            class="inline-flex items-center justify-center border border-white/60 bg-black/25 hover:bg-white hover:text-black transition text-white font-bold px-7 py-4 rounded-md backdrop-blur"
+          >
+            View Our Packages
+          </a>
+        </div>
+
+        <div class="mt-10 pt-7 border-t border-white/20 grid sm:grid-cols-3 gap-4 text-white/95">
+          <div class="flex items-center gap-3 text-[13px] md:text-[14px] font-semibold">
+            <i class="fa-solid fa-shield-halved text-lg"></i>
+            <span>DVSA Approved Instructors</span>
+          </div>
+
+          <div class="flex items-center gap-3 text-[13px] md:text-[14px] font-semibold">
+            <i class="fa-regular fa-calendar-check text-lg"></i>
+            <span>Flexible Lesson Options</span>
+          </div>
+
+          <div class="flex items-center gap-3 text-[13px] md:text-[14px] font-semibold">
+            <i class="fa-solid fa-chart-line text-lg"></i>
+            <span>High First-Time Pass Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating Card -->
+      <div class="mt-10 md:mt-0 md:absolute md:right-10 lg:right-14 md:top-[230px] w-full max-w-[205px] rounded-xl border border-white/30 bg-black/45 backdrop-blur p-5 text-white">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-circle-check text-[28px]"></i>
+          <span class="text-[18px] font-bold">DVSA</span>
+        </div>
+
+        <div class="mt-3 flex gap-1 text-yellow-400">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+
+        <p class="mt-3 text-[13px] leading-5 font-semibold text-white/90">
+          Trusted by Learners Across West Yorkshire
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose -->
+  <section id="about" class="bg-white py-20 md:py-24">
+    <div class="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center">
+        <p class="text-[13px] font-extrabold tracking-wide uppercase text-brandRed">
+          Why Choose Al-Rida?
+        </p>
+        <h2 class="mt-2 text-[32px] md:text-[42px] font-extrabold tracking-[-1px]">
+          Your Success is Our Priority
+        </h2>
+        <span class="mx-auto mt-5 block w-12 h-[3px] rounded-full bg-brandRed"></span>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-7">
+
+        <div class="rounded-xl border border-gray-200 bg-white px-8 py-10 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="mx-auto w-[82px] h-[82px] rounded-full bg-red-50 text-brandRed flex items-center justify-center">
+            <i class="fa-solid fa-users text-[34px]"></i>
+          </div>
+          <h3 class="mt-7 min-h-[56px] text-[18px] font-extrabold leading-7">
+            Experienced & DVSA-Certified Instructors
+          </h3>
+          <p class="mt-4 text-[14px] font-medium leading-7 text-gray-700">
+            All our instructors are fully DVSA-approved, patient and highly experienced,
+            helping nervous beginners and refresher drivers pass their driving test
+            quickly and confidently.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white px-8 py-10 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="mx-auto w-[82px] h-[82px] rounded-full bg-red-50 text-brandRed flex items-center justify-center">
+            <i class="fa-solid fa-wallet text-[34px]"></i>
+          </div>
+          <h3 class="mt-7 min-h-[56px] text-[18px] font-extrabold leading-7">
+            Affordable Driving Lesson Packages
+          </h3>
+          <p class="mt-4 text-[14px] font-medium leading-7 text-gray-700">
+            Flexible manual & automatic driving lesson packages designed to suit your
+            budget and schedule. Pay-as-you-go or block booking available for all learners.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white px-8 py-10 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="mx-auto w-[82px] h-[82px] rounded-full bg-red-50 text-brandRed flex items-center justify-center">
+            <i class="fa-solid fa-arrow-trend-up text-[34px]"></i>
+          </div>
+          <h3 class="mt-7 min-h-[56px] text-[18px] font-extrabold leading-7">
+            Proven High First-Time Pass Rate
+          </h3>
+          <p class="mt-4 text-[14px] font-medium leading-7 text-gray-700">
+            Our students consistently pass their driving test on the first attempt thanks
+            to structured lessons, clear guidance points and expert instruction.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="package-pattern bg-[#f5f7fa] py-20 md:py-24 relative overflow-hidden">
+    <div class="max-w-[1060px] mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+      <div class="text-center">
+        <p class="text-[13px] font-extrabold tracking-wide uppercase text-brandRed">
+          Our Lessons & Packages
+        </p>
+        <h2 class="mt-2 text-[32px] md:text-[42px] font-extrabold tracking-[-1px]">
+          Choose The Right Package For You
+        </h2>
+        <span class="mx-auto mt-5 block w-12 h-[3px] rounded-full bg-brandRed"></span>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-7">
+
+        <!-- Package 1 -->
+        <div class="relative overflow-hidden rounded-xl border border-gray-200 bg-white px-8 py-9 text-center shadow-md shadow-gray-200/70 hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="popular-ribbon bg-brandRed py-1.5 text-[11px] font-extrabold uppercase tracking-wide text-white">
+            Popular
+          </div>
+
+          <div class="mx-auto w-[76px] h-[76px] rounded-full bg-brandRed text-white flex items-center justify-center">
+            <i class="fa-solid fa-sliders text-[30px]"></i>
+          </div>
+
+          <h3 class="mt-7 text-[18px] font-extrabold leading-7">
+            Standard Manual Lesson <br />
+            (1 Hour)
+          </h3>
+
+          <p class="mt-5 text-[14px] font-medium text-gray-600">Lessons: 1</p>
+
+          <p class="mt-5 text-[31px] font-extrabold text-brandRed">£35.00</p>
+
+          <a
+            href="#"
+            class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brandRed px-6 py-3.5 text-[14px] font-bold text-white shadow-md shadow-red-200 hover:bg-red-700 transition"
+          >
+            Book Now <i class="fa-solid fa-chevron-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="relative overflow-hidden rounded-xl border border-gray-200 bg-white px-8 py-9 text-center shadow-md shadow-gray-200/70 hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="mx-auto w-[76px] h-[76px] rounded-full bg-brandRed text-white flex items-center justify-center">
+            <span class="text-[30px] font-extrabold">A</span>
+          </div>
+
+          <h3 class="mt-7 text-[18px] font-extrabold leading-7">
+            Standard Automatic Lesson <br />
+            (1 Hour)
+          </h3>
+
+          <p class="mt-5 text-[14px] font-medium text-gray-600">Lessons: 1</p>
+
+          <p class="mt-5 text-[31px] font-extrabold text-brandRed">£40.00</p>
+
+          <a
+            href="#"
+            class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brandRed px-6 py-3.5 text-[14px] font-bold text-white shadow-md shadow-red-200 hover:bg-red-700 transition"
+          >
+            Book Now <i class="fa-solid fa-chevron-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="relative overflow-hidden rounded-xl border border-gray-200 bg-white px-8 py-9 text-center shadow-md shadow-gray-200/70 hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="mx-auto w-[76px] h-[76px] rounded-full bg-brandRed text-white flex items-center justify-center">
+            <i class="fa-solid fa-gift text-[30px]"></i>
+          </div>
+
+          <h3 class="mt-7 text-[18px] font-extrabold leading-7">
+            Manual Block Lesson <br />
+            Packages (10 Hours)
+          </h3>
+
+          <p class="mt-5 text-[14px] font-medium text-gray-600">Lessons: 10</p>
+
+          <p class="mt-5 text-[31px] font-extrabold text-brandRed">£340.00</p>
+
+          <a
+            href="#"
+            class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-md bg-brandRed px-6 py-3.5 text-[14px] font-bold text-white shadow-md shadow-red-200 hover:bg-red-700 transition"
+          >
+            Book Now <i class="fa-solid fa-chevron-right text-xs"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="mt-8 flex justify-center gap-2">
+        <span class="h-2.5 w-7 rounded-full bg-brandRed"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Successful Students -->
+  <section class="bg-white py-20 md:py-24">
+    <div class="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-5">
+        <div>
+          <p class="text-[13px] font-extrabold uppercase tracking-wide text-brandRed">
+            Our Proud Learners
+          </p>
+          <h2 class="mt-2 text-[34px] md:text-[42px] font-extrabold tracking-[-1px]">
+            Successful Students
+          </h2>
+        </div>
+
+        <a
+          href="#"
+          class="inline-flex w-fit items-center gap-2 rounded-md border border-brandRed px-5 py-3 text-[14px] font-bold text-brandRed hover:bg-brandRed hover:text-white transition"
+        >
+          View Full Gallery
+          <i class="fa-solid fa-table-cells-large text-sm"></i>
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-1.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-2.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-3.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-4.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-5.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+        <div class="aspect-[16/9] overflow-hidden rounded-lg bg-gray-100 shadow-sm">
+          <img src="images/student-6.jpeg" alt="Successful student" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-[#f5f7fa] py-20 md:py-24">
+    <div class="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-[280px_1fr] gap-10">
+
+      <div class="flex flex-col justify-center">
+        <p class="text-[13px] font-extrabold uppercase tracking-wide text-brandRed">
+          What Our Students Say
+        </p>
+
+        <h2 class="mt-3 text-[34px] md:text-[40px] font-extrabold leading-tight tracking-[-1px]">
+          Real Reviews from Happy Learners
+        </h2>
+
+        <span class="mt-6 h-[3px] w-12 rounded-full bg-brandRed"></span>
+      </div>
+
+      <div class="relative">
+        <button class="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-xl items-center justify-center hover:text-brandRed transition">
+          <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+
+        <div class="rounded-2xl bg-white p-7 md:p-10 shadow-xl shadow-gray-200/80">
+          <i class="fa-solid fa-quote-left text-brandRed text-[54px] mb-3"></i>
+
+          <p class="text-[15px] md:text-[16px] font-medium italic leading-8 text-gray-800">
+            “Passed first time with only 1 fault! Huge shoutout to Mani from Al-Rida
+            Driving School! I just passed my test on the very first try with only one
+            minor fault, and I honestly couldn’t have done it without him. Mani is an
+            amazing instructor — so patient, calm, and brilliant at breaking down tricky
+            manoeuvres. He genuinely built up my confidence every lesson and made sure
+            I felt ready for the big day. Absolute legend!”
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <span class="font-extrabold">Areesha</span>
+            <div class="flex gap-1 text-yellow-400">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <button class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-xl items-center justify-center hover:text-brandRed transition">
+          <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+
+        <div class="mt-7 flex justify-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-brandRed"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden cta-bg">
+    <div class="red-line-glow"></div>
+
+    <div class="relative max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-[36px] md:text-[48px] font-extrabold tracking-[-1px] text-white">
+          Ready to Start Driving?
+        </h2>
+
+        <p class="mt-3 text-[17px] font-medium text-white/85">
+          Join thousands of happy learners across the UK.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#packages"
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-brandRed px-7 py-4 text-[15px] font-bold text-white hover:bg-red-700 transition"
+          >
+            Book Your Lesson Today
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </a>
+
+          <a
+            href="tel:07897559559"
+            class="inline-flex items-center justify-center gap-3 rounded-md border border-white/50 bg-black/25 px-7 py-4 text-[15px] font-bold text-white hover:bg-white hover:text-black transition"
+          >
+            <i class="fa-solid fa-phone"></i>
+            07897 559559
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="images/cta-car.png"
+          alt="Al-Rida driving school car"
+          class="mx-auto w-full max-w-[560px] object-contain drop-shadow-2xl"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="links" class="bg-brandDark text-white">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr] gap-10">
+
+      <div>
+        <img
+          src="images/logo.png"
+          alt="Al-Rida Driving School"
+          class="h-[62px] w-auto object-contain bg-white rounded-md p-1"
+        />
+
+        <p class="mt-5 max-w-[280px] text-[14px] font-medium leading-7 text-white/70">
+          Professional driving lessons with DVSA approved instructors.
+          We help you become a confident, safe and skilled driver for life.
+        </p>
+
+        <div class="mt-6 flex gap-4 text-white">
+          <i class="fa-brands fa-facebook-f text-[20px]"></i>
+          <i class="fa-brands fa-instagram text-[20px]"></i>
+          <i class="fa-brands fa-tiktok text-[20px]"></i>
+          <i class="fa-brands fa-snapchat text-[20px]"></i>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-[16px] font-extrabold">Quick Links</h3>
+        <ul class="mt-5 space-y-3 text-[14px] font-medium text-white/70">
+          <li><a href="#" class="hover:text-white transition">Home</a></li>
+          <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#services" class="hover:text-white transition">Our Services</a></li>
+          <li><a href="#reviews" class="hover:text-white transition">Reviews</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-[16px] font-extrabold">Useful Links</h3>
+        <ul class="mt-5 space-y-3 text-[14px] font-medium text-white/70">
+          <li><a href="#" class="hover:text-white transition">DVSA Website</a></li>
+          <li><a href="#" class="hover:text-white transition">Theory Test</a></li>
+          <li><a href="#" class="hover:text-white transition">Highway Code</a></li>
+          <li><a href="#" class="hover:text-white transition">Road Safety</a></li>
+          <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div id="contact">
+        <h3 class="text-[16px] font-extrabold">Contact Info</h3>
+
+        <div class="mt-5 space-y-4 text-[14px] font-medium leading-6 text-white/75">
+          <div class="flex gap-3">
+            <i class="fa-solid fa-location-dot mt-1 text-white"></i>
+            <p>Wakefield, Dewsbury, Batley, Heckmondwike & Surrounding Areas</p>
+          </div>
+
+          <div class="flex gap-3">
+            <i class="fa-solid fa-phone text-white"></i>
+            <a href="tel:07897559559">07897 559559</a>
+          </div>
+
+          <div class="flex gap-3">
+            <i class="fa-solid fa-envelope text-white"></i>
+            <a href="mailto:info@alridadrivingschool.co.uk">
+              info@alridadrivingschool.co.uk
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 px-4 py-6 text-center text-[13px] text-white/60">
+      © 2026 Al-Rida Driving School. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a
+    href="https://wa.me/447897559559"
+    target="_blank"
+    class="fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-full bg-[#1fbf4b] px-4 py-3 text-[13px] font-bold text-white shadow-2xl shadow-green-900/30 hover:scale-105 transition"
+  >
+    <span class="hidden sm:inline">How can we help you?</span>
+    <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#17a43f]">
+      <i class="fa-brands fa-whatsapp text-[24px]"></i>
+    </span>
+  </a>
+
+  <!-- Mobile menu script -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+
+      const icon = mobileMenuBtn.querySelector('i');
+
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    });
+  </script>
+
+</body>
+</html>
