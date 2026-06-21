@@ -48,6 +48,326 @@
           url("assets/hero-driving.jpg") center / cover no-repeat;
       }
     }
+    .cta-bg {
+    background: radial-gradient(circle at 78% 45%, rgba(215, 25, 32, 0.75), transparent 32%), linear-gradient(120deg, #07090d 0%, #05080d 52%, #d71920 140%);
+}
+/* Corporate animated header CTA */
+.nav-book-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d71920 0%, #ec1f28 55%, #b90f16 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 12px 28px rgba(215, 25, 32, 0.28);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.nav-book-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.75s ease;
+}
+
+.nav-book-btn::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -2;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.22), transparent 58%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.nav-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(215, 25, 32, 0.36);
+  background: linear-gradient(135deg, #ec1f28 0%, #d71920 55%, #990d12 100%);
+}
+
+.nav-book-btn:hover::before {
+  transform: translateX(130%);
+}
+
+.nav-book-btn:hover::after {
+  opacity: 1;
+}
+
+.nav-book-btn i {
+  font-size: 12px;
+  transition: transform 0.28s ease;
+}
+
+.nav-book-btn:hover i {
+  transform: translateX(4px);
+}
+
+.nav-book-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 22px rgba(215, 25, 32, 0.24);
+}
+
+.nav-book-btn:focus-visible {
+  outline: 3px solid rgba(215, 25, 32, 0.25);
+  outline-offset: 4px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-book-btn,
+  .nav-book-btn::before,
+  .nav-book-btn::after,
+  .nav-book-btn i {
+    transition: none;
+  }
+
+  .nav-book-btn:hover {
+    transform: none;
+  }
+}
+
+/* Gentle corporate pulse */
+@keyframes navBookPulse {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 12px 28px rgba(215, 25, 32, 0.26);
+  }
+
+  50% {
+    transform: translateY(-1px) scale(1.018);
+    box-shadow: 0 18px 38px rgba(215, 25, 32, 0.38);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 12px 28px rgba(215, 25, 32, 0.26);
+  }
+}
+
+.nav-book-btn {
+  animation: navBookPulse 2.8s ease-in-out infinite;
+}
+
+/* Keep hover stronger but clean */
+.nav-book-btn:hover {
+  animation-play-state: paused;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 20px 42px rgba(215, 25, 32, 0.42);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .nav-book-btn {
+    animation: none;
+  }
+}
+
+/* Auto video modal */
+body.video-modal-open {
+  overflow: hidden;
+}
+
+.promo-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.promo-video-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.promo-video-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.promo-video-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+  transform: translateY(14px) scale(0.96);
+  transition: transform 0.28s ease;
+}
+
+.promo-video-modal.is-open .promo-video-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.promo-video-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: grid;
+  height: 42px;
+  width: 42px;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.promo-video-close:hover {
+  transform: rotate(90deg);
+  background: #d71920;
+  color: #fff;
+}
+
+.promo-video-header {
+  padding: 22px 76px 18px 26px;
+  border-bottom: 1px solid #ececec;
+}
+
+.promo-video-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d71920;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.promo-video-title {
+  margin-top: 6px;
+  color: #080808;
+  font-size: 24px;
+  font-weight: 950;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.promo-video-frame {
+  background: #050505;
+}
+
+.promo-video-frame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 68vh;
+  object-fit: contain;
+  background: #050505;
+}
+
+.promo-video-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #fff;
+}
+
+.promo-video-footer p {
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.promo-video-bottom-close {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #151515;
+  padding: 0 22px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.promo-video-bottom-close:hover {
+  transform: translateY(-1px);
+  background: #d71920;
+}
+
+@media (max-width: 640px) {
+  .promo-video-modal {
+    padding: 14px;
+  }
+
+  .promo-video-dialog {
+    border-radius: 14px;
+  }
+
+  .promo-video-header {
+    padding: 20px 64px 16px 18px;
+  }
+
+  .promo-video-title {
+    font-size: 20px;
+  }
+
+  .promo-video-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .promo-video-bottom-close {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-video-modal,
+  .promo-video-dialog,
+  .promo-video-close,
+  .promo-video-bottom-close {
+    transition: none;
+  }
+
+  .promo-video-close:hover {
+    transform: none;
+  }
+}
+
   </style>
 </head>
 
@@ -94,13 +414,10 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a
-          href="#contact"
-          class="hidden rounded-lg bg-arRed px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-red-500/20 transition hover:bg-black sm:inline-flex"
-        >
-          Book a Lesson
-          <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
-        </a>
+       <a href="#contact" class="nav-book-btn hidden sm:inline-flex">
+  <span>Book a Lesson</span>
+  <i class="fa-solid fa-chevron-right"></i>
+</a>
 
         <button class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-gray-200 text-xl lg:hidden">
           <i class="fa-solid fa-bars"></i>
@@ -125,7 +442,7 @@
           structured lessons, affordable packages and patient coaching for every learner.
         </p>
 
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <!-- <div class="mt-8 flex flex-col gap-4 sm:flex-row">
           <a href="#contact" class="inline-flex h-12 items-center justify-center rounded-lg bg-arRed px-7 text-sm font-extrabold text-white transition hover:bg-black">
             Book a Lesson
             <i class="fa-solid fa-chevron-right ml-3 text-xs"></i>
@@ -134,7 +451,7 @@
             <i class="fa-solid fa-phone mr-3 text-arRed"></i>
             Call 07897559559
           </a>
-        </div>
+        </div> -->
 
         <div class="mt-10 grid max-w-[480px] grid-cols-3 gap-5 mb-5">
           <div class="text-center">
@@ -220,7 +537,7 @@
         </div>
       </div>
 
-      <a href="#contact" class="inline-flex h-14 items-center justify-center rounded-lg bg-arRed px-7 font-black text-white transition hover:bg-white hover:text-arRed">
+      <a href="#contact" class="nav-book-btn hidden sm:inline-flex">
         Start Booking
         <i class="fa-solid fa-chevron-right ml-3 text-sm"></i>
       </a>
@@ -258,7 +575,7 @@
           <span class="grid h-16 w-16 place-items-center rounded-full bg-arRed text-3xl font-black text-white">
             A
           </span>
-          <h3 class="mt-6 text-2xl font-black">Automatic Driving Lessons</h3>
+          <h3 class="mt-6 text-2xl font-black">Auto Driving Lessons</h3>
           <p class="mt-4 text-[15px] leading-7 text-gray-700">
             Ideal for nervous beginners or learners who want a simpler driving experience.
           </p>
@@ -279,7 +596,7 @@
   </section>
 
   <!-- WHY CHOOSE -->
-  <section class="px-5 py-12">
+  <section class="px-5 py-12 bg-[#f5f7fa]">
     <div class="mx-auto max-w-[1180px]">
       <div class="mx-auto max-w-[680px] text-center">
         <p class="text-sm font-black uppercase text-arRed">Why Choose Al-Rida Driving School?</p>
@@ -375,7 +692,7 @@
   </section>
 
  <!-- GALLERY / OUR SUCCESS -->
-<section id="gallery" class="bg-white px-5 py-16 lg:py-20">
+<section id="gallery" class="px-5 py-16 lg:py-20 bg-[#f5f7fa]">
   <div class="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[360px_1fr] lg:items-start">
     
     <!-- LEFT CONTENT - wider -->
@@ -446,32 +763,104 @@
   </div>
 </section>
 
-  <!-- REVIEWS -->
-  <section id="reviews" class="bg-arSoft px-5 py-14 text-white">
-    <div class="mx-auto max-w-[1180px]">
-      <div class="text-center">
-        <p class="text-sm font-black uppercase text-arRed">What Our Students Say</p>
-        <h2 class="mt-2 text-4xl font-black tracking-[-0.04em]">Real Reviews from Preal Learners</h2>
+   <!-- Reviews -->
+  <section id="reviews" class="bg-white py-20 md:py-24">
+    <div class="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-[280px_1fr] gap-10">
+
+      <div class="flex flex-col justify-center">
+        <p class="text-[13px] font-extrabold uppercase tracking-wide text-brandRed">
+          What Our Students Say
+        </p>
+
+        <h2 class="mt-3 text-[34px] md:text-[40px] font-extrabold leading-tight tracking-[-1px]">
+          Real Reviews from Happy Learners
+        </h2>
+
+        <span class="mt-6 h-[3px] w-12 rounded-full bg-brandRed"></span>
       </div>
 
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
-        <div class="rounded-lg bg-white p-7 text-black">
-          <div class="text-arRed">★★★★★</div>
-          <p class="mt-4 text-sm leading-6">Passed first time with only 4 minors. Mani was calm, clear and professional. Highly recommended!</p>
-          <h4 class="mt-5 font-black">Zara Ismail</h4>
+      <div class="relative">
+        <button class="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-xl items-center justify-center hover:text-brandRed transition">
+          <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+
+        <div class="rounded-2xl bg-white p-7 md:p-10 shadow-xl shadow-gray-200/80">
+          <i class="fa-solid fa-quote-left text-brandRed text-[54px] mb-3"></i>
+
+          <p class="text-[15px] md:text-[16px] font-medium italic leading-8 text-gray-800">
+            “Passed first time with only 1 fault! Huge shoutout to Mani from Al-Rida
+            Driving School! I just passed my test on the very first try with only one
+            minor fault, and I honestly couldn’t have done it without him. Mani is an
+            amazing instructor — so patient, calm, and brilliant at breaking down tricky
+            manoeuvres. He genuinely built up my confidence every lesson and made sure
+            I felt ready for the big day. Absolute legend!”
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <span class="font-extrabold">Areesha</span>
+            <div class="flex gap-1 text-yellow-400">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
         </div>
 
-        <div class="rounded-lg bg-white p-7 text-black">
-          <div class="text-arRed">★★★★★</div>
-          <p class="mt-4 text-sm leading-6">Very patient instructor and explains everything really well. I felt fully prepared on test day.</p>
-          <h4 class="mt-5 font-black">Shohaib Khan</h4>
-        </div>
+        <button class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-xl items-center justify-center hover:text-brandRed transition">
+          <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
 
-        <div class="rounded-lg bg-white p-7 text-black">
-          <div class="text-arRed">★★★★★</div>
-          <p class="mt-4 text-sm leading-6">Brilliant lessons, great guidance and flexible timings. Couldn’t have asked for a better experience.</p>
-          <h4 class="mt-5 font-black">Ayesha R.</h4>
+        <div class="mt-7 flex justify-center gap-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-brandRed"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
         </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- CTA -->
+  <section class="relative overflow-hidden cta-bg">
+    <div class="red-line-glow"></div>
+
+    <div class="relative max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-[36px] md:text-[48px] font-extrabold tracking-[-1px] text-white">
+          Ready to Start Driving?
+        </h2>
+
+        <p class="mt-3 text-[17px] font-medium text-white/85">
+          Join thousands of happy learners across the UK.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#packages"
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-brandRed px-7 py-4 text-[15px] font-bold text-white hover:bg-red-700 transition"
+          >
+            Book Your Lesson Today
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </a>
+
+          <a
+            href="tel:07897559559"
+            class="inline-flex items-center justify-center gap-3 rounded-md border border-white/50 bg-black/25 px-7 py-4 text-[15px] font-bold text-white hover:bg-white hover:text-black transition"
+          >
+            <i class="fa-solid fa-phone"></i>
+            07897 559559
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="images/car-cta.png"
+          alt="Al-Rida driving school car"
+          class="mx-auto w-full max-w-[560px] object-contain drop-shadow-2xl"
+        />
       </div>
     </div>
   </section>
@@ -501,9 +890,8 @@
           <br />
           Mirfield <span class="mx-2 text-arRed">•</span>
           Ossett <span class="mx-2 text-arRed">•</span>
-          Morley <span class="mx-2 text-arRed">•</span>
-          Bradford <span class="mx-2 text-arRed">•</span>
-          Leeds
+          Morley 
+        
         </p>
 
         <div class="mx-auto mt-7 grid h-[170px] max-w-[420px] place-items-center rounded-xl bg-gray-50">
@@ -541,6 +929,7 @@
     </div>
   </section>
 
+  
   <!-- FOOTER -->
   <footer class="border-t border-gray-200 px-5 py-5">
     <div class="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-4 text-center text-sm text-gray-700 md:flex-row">
@@ -552,6 +941,99 @@
       </div>
     </div>
   </footer>
+
+  <!-- AUTO VIDEO MODAL -->
+  <div id="promoVideoModal" class="promo-video-modal" aria-hidden="true">
+    <div class="promo-video-backdrop" data-promo-video-close></div>
+
+    <div class="promo-video-dialog" role="dialog" aria-modal="true" aria-labelledby="promoVideoTitle">
+      <button type="button" class="promo-video-close" aria-label="Close video" data-promo-video-close>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="promo-video-header">
+        <span class="promo-video-label">
+          <i class="fa-solid fa-circle-play"></i>
+          Driving School Video
+        </span>
+        <h2 id="promoVideoTitle" class="promo-video-title">
+          Start Your Driving Journey with Al-Rida
+        </h2>
+      </div>
+
+      <div class="promo-video-frame">
+        <video id="promoVideo" controls muted playsinline preload="metadata">
+          <source src="images/video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="promo-video-footer">
+        <p>Watch our quick introduction, then book your first lesson when you are ready.</p>
+
+        <button type="button" class="promo-video-bottom-close" data-promo-video-close>
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.getElementById("promoVideoModal");
+      const video = document.getElementById("promoVideo");
+
+      if (!modal) return;
+
+      const closeButtons = modal.querySelectorAll("[data-promo-video-close]");
+      let hasOpened = false;
+
+      function openVideoModal() {
+        if (hasOpened) return;
+
+        hasOpened = true;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+
+        if (video) {
+          video.currentTime = 0;
+
+          const playPromise = video.play();
+
+          if (playPromise !== undefined) {
+            playPromise.catch(function () {
+              // Browser blocked autoplay. User can press play manually.
+            });
+          }
+        }
+      }
+
+      function closeVideoModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      }
+
+      window.setTimeout(openVideoModal, 3000);
+
+      closeButtons.forEach(function (button) {
+        button.addEventListener("click", closeVideoModal);
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+          closeVideoModal();
+        }
+      });
+    });
+  </script>
+
 
 </body>
 </html>
